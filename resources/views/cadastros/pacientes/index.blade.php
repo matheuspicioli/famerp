@@ -11,23 +11,40 @@
                             {!! Button::primary('Novo(a) paciente')->asLinkTo(route('pacientes.create')) !!}
                         </div>
                     </div>
-                    <div class="panel-body">
-                        {!!
-                            Table::withContents($pacientes->items())
-                                ->striped()
-                                ->callback('Avaliação alterada?', function($field, $paciente){
-                                    return $paciente->AvaliacaoAlterada == 1 ? Icon::ok().' Sim' : Icon::remove().' Não';
-                                })
-                                ->callback('Ações', function($field, $paciente){
-                                    $linkEdit = route('pacientes.edit',['paciente' => $paciente->PacienteID]);
-                                    $linkShow = route('pacientes.show',['paciente' => $paciente->PacienteID]);
-                                    return Button::link(Icon::create('pencil'))->asLinkTo($linkEdit).'|'.
-                                            Button::link(Icon::create('remove'))->asLinkTo($linkShow);
-                                })
-                        !!}
-                    </div>
-                    <div class="panel-body">
-                        {!! $pacientes->links() !!}
+                    <div class="panel-body" ng-app="famerp" ng-controller="pacienteController">
+                        <form>
+                            <input type="text" class="form-control" ng-model="busca">
+                        </form>
+                        <table class="table table-striped">
+                            <thead>
+                                <th>#</th>
+                                <th>Nome</th>
+                                <th>Sexo</th>
+                                <th>Avaliação alterada?</th>
+                                <th>Ações</th>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="paciente in pacientes | filter:busca">
+                                    <td>@{{ paciente.PacienteID }}</td>
+                                    <td>@{{ paciente.Nome }}</td>
+                                    <td>@{{ paciente.Sexo == 'M' ? "Masculino" : "Feminino" }}</td>
+                                    <td>@{{
+                                            paciente.AvaliacaoAlterada == 1 ?
+                                            'Sim' :
+                                            'Não'
+                                         }}
+                                    </td>
+                                    <td>
+                                        <a href="/pacientes/@{{ paciente.PacienteID }}/edit">
+                                            <span class="glyphicon glyphicon-pencil"></span>
+                                        </a>
+                                        <a href="/pacientes/@{{ paciente.PacienteID }}">
+                                            <span class="glyphicon glyphicon-remove"></span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

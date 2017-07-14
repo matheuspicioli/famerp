@@ -21,7 +21,8 @@ class PacienteForm extends Form
                 'rules' => 'required'
             ])
             ->add('DataNascimento', 'date', [
-                'rules' => 'required|date'
+                'rules' => 'required|date',
+                'label' => 'Data de nascimento'
             ])
             ->add('AvaliacaoAlterada', 'checkbox', [
                 'label' => 'Avaliação alterada?'
@@ -32,7 +33,7 @@ class PacienteForm extends Form
                     'tag' => 'p',
                     'attr' => ['class' => 'help-block']
                 ],
-                'rules' => 'required|max:5'
+                'rules' => 'required|max:4'
             ])
             ->add('Altura', 'text', [
                 'help_block' => [
@@ -40,7 +41,7 @@ class PacienteForm extends Form
                     'tag' => 'p',
                     'attr' => ['class' => 'help-block']
                 ],
-                'rules' => 'required|max:5'
+                'rules' => 'required|max:4'
             ]);
     }
 }

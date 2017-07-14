@@ -57,12 +57,13 @@ class PacientesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  Paciente  $paciente
+     * @param  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Paciente  $paciente)
+    public function show($id)
     {
-        return view('cadastros.pacientes.show', ['paciente' => $paciente]);
+        $paciente = Paciente::find($id);
+        return view('cadastros.pacientes.show', compact('paciente'));
     }
 
     /**
@@ -105,12 +106,12 @@ class PacientesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Paciente $paciente
+     * @param  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, Paciente $paciente)
+    public function destroy(Request $request, $id)
     {
-        $paciente->delete();
+        Paciente::find($id)->delete();
         $request->session()->flash('message', 'Paciente deletado(a) com sucesso!');
         return redirect()->route('pacientes.index');
     }

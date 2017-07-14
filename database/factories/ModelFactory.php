@@ -38,9 +38,6 @@ $factory->define(\Famerp\Models\Paciente::class, function(Faker\Generator $faker
 $factory->define(\Famerp\Models\ListaChamada::class, function(Faker\Generator $faker){
     return [
         'Prontuario' => rand(1,3) == 1 ? $faker->word : '',
-        'ID' => $faker->numberBetween(1, 32000),
-        'Proc' => $faker->sentence(2),
-        'CID' => $faker->numberBetween(1, 32000),
         'Observacao' => rand(1,4) == 1 ? $faker->sentence(20) : '',
         'PacienteID' => 1
     ];

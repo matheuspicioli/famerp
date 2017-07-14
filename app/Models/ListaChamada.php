@@ -12,7 +12,7 @@ class ListaChamada extends Model implements TableInterface
         'Observacao', 'PacienteID'
     ];
 
-    //protected $dateFormat = 'U';
+    protected $appends = ['PacienteNome', 'HoraCadastro'];
 
     protected $primaryKey = 'ListaChamadaID';
     protected $table = 'ListaChamadas';
@@ -31,11 +31,9 @@ class ListaChamada extends Model implements TableInterface
     {
         return [
             '#',
-            'Horas',
+            'Hora do cadastro',
             'Paciente',
-            'Prontuário',
-            'ID',
-            'CID'
+            'Prontuário'
         ];
     }
 
@@ -51,27 +49,23 @@ class ListaChamada extends Model implements TableInterface
         switch ($header){
             case '#':
                 return $this->ListaChamadaID;
-            case 'Horas':
+            case 'Hora do cadastro':
                 return $this->getHoraCadastro();
             case 'Paciente':
                 return $this->getPaciente();
             case 'Prontuário':
                 return $this->Prontuario;
-            case 'ID':
-                return $this->ID;
-            case 'CID':
-                return $this->CID;
         }
     }
 
-    public function getHoraCadastro(){
+    public function getHoraCadastroAttribute(){
         $hora = $this->created_at->hour;
         $minuto = $this->created_at->minute;
         $segundo = $this->created_at->second;
         return "$hora:$minuto:$segundo";
     }
 
-    public function getPaciente(){
+    public function getPacienteNomeAttribute(){
         $lista = ListaChamada::find($this->ListaChamadaID);
         return $lista->Paciente->Nome;
     }

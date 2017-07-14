@@ -20,19 +20,8 @@ class ListaChamadaForm extends Form
                 ]
             )
             ->add('Prontuario', 'text', [
-                'rules' => 'nullable|max:10',
+                'rules' => 'nullable|max:30',
                 'label' => 'Prontuário'
-            ])
-            ->add('ID', 'number', [
-                'rules' => 'nullable|min:1'
-            ])
-            ->add('Proc', 'text', [
-                'rules' => 'nullable|max:100',
-                'label' => 'Proc.'
-            ])
-            ->add('CID', 'number', [
-                'rules' => 'nullable|min:1',
-                'label' => 'CID'
             ])
             ->add('Observacao', 'textarea', [
                 'label' => 'Observação',

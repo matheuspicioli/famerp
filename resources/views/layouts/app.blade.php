@@ -51,8 +51,11 @@
 
     @yield('content')
 </div>
+<!-- Angular -->
+<script src="{{ asset('js/angular.min.js') }}"></script>
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('app/app.js') }}"></script>
 </body>
 </html>

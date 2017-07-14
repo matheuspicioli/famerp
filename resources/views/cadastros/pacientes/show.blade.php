@@ -8,9 +8,9 @@
                     <div class="panel-heading text-center">
                         <h4>Descrição do(a) paciente</h4>
                         <div class="row">
-                            {!! Button::primary(Icon::create('pencil'))->asLinkTo(route('pacientes.edit',['paciente' => $paciente->PacienteID])) !!}
+                            {!! Button::primary(Icon::create('pencil'))->asLinkTo(route('pacientes.edit',$paciente->PacienteID)) !!}
                             {!! Button::danger(Icon::create('remove'))
-                                    ->asLinkTo(route('pacientes.destroy', ['paciente' => $paciente->PacienteID]))
+                                    ->asLinkTo(route('pacientes.destroy', $paciente->PacienteID))
                                      ->addAttributes(['onclick' => "event.preventDefault();document.getElementById(\"form-delete\").submit();"])
                             !!}
                         </div>
@@ -18,7 +18,7 @@
                     <div class="panel-body">
                         @php $formDelete = FormBuilder::plain([
                                 'id'        => 'form-delete',
-                                'route'     => ['pacientes.destroy','paciente' => $paciente->PacienteID],
+                                'route'     => ['pacientes.destroy', $paciente->PacienteID],
                                 'method'    => 'DELETE',
                                 'style'     => 'display:none'
                             ]) @endphp

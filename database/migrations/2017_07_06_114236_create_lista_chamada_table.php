@@ -16,9 +16,6 @@ class CreateListaChamadaTable extends Migration
         Schema::create('ListaChamadas', function (Blueprint $table) {
             $table->increments('ListaChamadaID')->unsigned();
             $table->string('Prontuario', 255)->nullable();
-            $table->smallInteger('ID')->unsigned()->nullable(); //O que é isso?
-            $table->string('Proc', 100)->nullable(); //O que é isso
-            $table->smallInteger('CID')->unsigned()->nullable(); //O que é isso?
             $table->text('Observacao')->nullable();
 
             $table->integer('PacienteID')->unsigned();

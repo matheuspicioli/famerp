@@ -16,8 +16,7 @@ class ListaChamadasController extends Controller
      */
     public function index()
     {
-        $listasChamadas = ListaChamada::paginate();
-        return view('cadastros.lista-chamada.index', compact('listasChamadas'));
+        return view('cadastros.lista-chamada.index');
     }
 
     /**
@@ -60,9 +59,10 @@ class ListaChamadasController extends Controller
      * @param  ListaChamada  $listaChamada
      * @return \Illuminate\Http\Response
      */
-    public function show(ListaChamada $listaChamada)
+    public function show($id)
     {
-        return view('cadastros.lista-chamada.show', ['listaChamada' => $listaChamada]);
+        $listaChamada = ListaChamada::find($id);
+        return view('cadastros.lista-chamada.show', compact('listaChamada'));
     }
 
     /**
@@ -109,9 +109,9 @@ class ListaChamadasController extends Controller
      * @param  ListaChamada  $listaChamada
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, ListaChamada $listaChamada)
+    public function destroy(Request $request, $id)
     {
-        $listaChamada->delete();
+        ListaChamada::find($id)->delete();
         $request->session()->flash('message', 'Lista de chamada deletada com sucesso!');
         return redirect()->route('lista-chamada.index');
     }
