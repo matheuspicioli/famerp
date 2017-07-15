@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2017-07-12.
+    * Generated on 2017-07-15.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -68,6 +68,8 @@ namespace PHPSTORM_META {
         'bootstrapper::tabbable' => Bootstrapper\Tabbable::class,
         'bootstrapper::table' => Bootstrapper\Table::class,
         'bootstrapper::thumbnail' => Bootstrapper\Thumbnail::class,
+        'dompdf' => Dompdf\Dompdf::class,
+        'dompdf.wrapper' => Barryvdh\DomPDF\PDF::class,
         'command.ide-helper.generate' => Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
         'command.ide-helper.models' => Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
@@ -218,6 +220,8 @@ namespace PHPSTORM_META {
         'bootstrapper::tabbable' => Bootstrapper\Tabbable::class,
         'bootstrapper::table' => Bootstrapper\Table::class,
         'bootstrapper::thumbnail' => Bootstrapper\Thumbnail::class,
+        'dompdf' => Dompdf\Dompdf::class,
+        'dompdf.wrapper' => Barryvdh\DomPDF\PDF::class,
         'command.ide-helper.generate' => Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
         'command.ide-helper.models' => Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
@@ -368,6 +372,8 @@ namespace PHPSTORM_META {
         'bootstrapper::tabbable' => Bootstrapper\Tabbable::class,
         'bootstrapper::table' => Bootstrapper\Table::class,
         'bootstrapper::thumbnail' => Bootstrapper\Thumbnail::class,
+        'dompdf' => Dompdf\Dompdf::class,
+        'dompdf.wrapper' => Barryvdh\DomPDF\PDF::class,
         'command.ide-helper.generate' => Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
         'command.ide-helper.models' => Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
@@ -518,6 +524,8 @@ namespace PHPSTORM_META {
         'bootstrapper::tabbable' => Bootstrapper\Tabbable::class,
         'bootstrapper::table' => Bootstrapper\Table::class,
         'bootstrapper::thumbnail' => Bootstrapper\Thumbnail::class,
+        'dompdf' => Dompdf\Dompdf::class,
+        'dompdf.wrapper' => Barryvdh\DomPDF\PDF::class,
         'command.ide-helper.generate' => Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
         'command.ide-helper.models' => Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
@@ -668,6 +676,8 @@ namespace PHPSTORM_META {
         'bootstrapper::tabbable' => Bootstrapper\Tabbable::class,
         'bootstrapper::table' => Bootstrapper\Table::class,
         'bootstrapper::thumbnail' => Bootstrapper\Thumbnail::class,
+        'dompdf' => Dompdf\Dompdf::class,
+        'dompdf.wrapper' => Barryvdh\DomPDF\PDF::class,
         'command.ide-helper.generate' => Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
         'command.ide-helper.models' => Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
@@ -818,6 +828,8 @@ namespace PHPSTORM_META {
         'bootstrapper::tabbable' => Bootstrapper\Tabbable::class,
         'bootstrapper::table' => Bootstrapper\Table::class,
         'bootstrapper::thumbnail' => Bootstrapper\Thumbnail::class,
+        'dompdf' => Dompdf\Dompdf::class,
+        'dompdf.wrapper' => Barryvdh\DomPDF\PDF::class,
         'command.ide-helper.generate' => Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
         'command.ide-helper.models' => Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
@@ -968,6 +980,8 @@ namespace PHPSTORM_META {
         'bootstrapper::tabbable' => Bootstrapper\Tabbable::class,
         'bootstrapper::table' => Bootstrapper\Table::class,
         'bootstrapper::thumbnail' => Bootstrapper\Thumbnail::class,
+        'dompdf' => Dompdf\Dompdf::class,
+        'dompdf.wrapper' => Barryvdh\DomPDF\PDF::class,
         'command.ide-helper.generate' => Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
         'command.ide-helper.models' => Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,

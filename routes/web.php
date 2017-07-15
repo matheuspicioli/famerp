@@ -18,3 +18,5 @@ Route::resource('lista-chamada', 'Cadastros\ListaChamadasController');
 
 Route::post('lista-chamada/pesquisa/', 'Cadastros\ListaChamadasController@pesquisar')
 ->name('lista-chamada.pesquisar');
+
+Route::get('/pdf', 'PDF\PDFController@pdfListaChamada');
