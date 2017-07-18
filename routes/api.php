@@ -17,5 +17,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/listas-chamadas', 'API\ListasChamadasAPIController@index');
+Route::get('/turmas', 'API\TurmasAPIController@index');
 Route::get('/pacientes', 'API\PacientesAPIController@index');

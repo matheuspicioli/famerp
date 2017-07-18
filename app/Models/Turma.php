@@ -5,21 +5,27 @@ namespace Famerp\Models;
 use Bootstrapper\Interfaces\TableInterface;
 use Illuminate\Database\Eloquent\Model;
 
-class ListaChamada extends Model implements TableInterface
+class Turma extends Model implements TableInterface
 {
     protected $fillable = [
-        'ID', 'Proc', 'CID', 'Prontuario',
-        'Observacao', 'PacienteID'
+        'Nome', 'Prontuario', 'Observacao'
     ];
 
-    protected $appends = ['PacienteNome', 'HoraCadastro'];
+    protected $appends = ['HoraCadastro'];
 
-    protected $primaryKey = 'ListaChamadaID';
-    protected $table = 'ListaChamadas';
+    protected $primaryKey = 'TurmaID';
+    protected $table = 'Turmas';
 
-    public function Paciente()
+    public function Pacientes()
     {
-        return $this->belongsTo('Famerp\Models\Paciente', 'PacienteID');
+        return $this->hasMany(Paciente::class, 'TurmaID');
+    }
+
+    public function getHoraCadastroAttribute(){
+        $hora = $this->created_at->hour;
+        $minuto = $this->created_at->minute;
+        $segundo = $this->created_at->second;
+        return "$hora:$minuto:$segundo";
     }
 
     /**
@@ -56,17 +62,5 @@ class ListaChamada extends Model implements TableInterface
             case 'Prontuário':
                 return $this->Prontuario;
         }
-    }
-
-    public function getHoraCadastroAttribute(){
-        $hora = $this->created_at->hour;
-        $minuto = $this->created_at->minute;
-        $segundo = $this->created_at->second;
-        return "$hora:$minuto:$segundo";
-    }
-
-    public function getPacienteNomeAttribute(){
-        $lista = ListaChamada::find($this->ListaChamadaID);
-        return $lista->Paciente->Nome;
     }
 }

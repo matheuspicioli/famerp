@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('Titulo', 'Editar paciente')
 @section('content')
     <div class="container">
         <div class="row">
@@ -31,11 +31,15 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">Hora do cadastro</th>
-                                    <td>{{ $paciente->getHoraCadastro() }}</td>
+                                    <td>{{ $paciente->HoraCadastro }}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Nome</th>
                                     <td>{{ $paciente->Nome }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Turma</th>
+                                    <td>{{ $paciente->NomeTurma }}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Cartão do SUS</th>
@@ -47,7 +51,7 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">Data de nascimento</th>
-                                    <td>{{ $paciente->getDataNascimento() }}</td>
+                                    <td>{{ $paciente->DataNascimentoPadrao }}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Avaliacao alterada?</th>

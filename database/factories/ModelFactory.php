@@ -23,6 +23,14 @@ $factory->define(Famerp\User::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(\Famerp\Models\Turma::class, function(Faker\Generator $faker){
+    return [
+        'Nome'     => $faker->name,
+        'Prontuario'    => rand(1,3) == 1 ? $faker->sentence(2) : '',
+        'Observacao'    => rand(1,5) == 1 ? $faker->sentence(20) : ''
+    ];
+});
+
 $factory->define(\Famerp\Models\Paciente::class, function(Faker\Generator $faker){
     return [
         'Nome' => $faker->name,
@@ -31,14 +39,7 @@ $factory->define(\Famerp\Models\Paciente::class, function(Faker\Generator $faker
         'DataNascimento' => $faker->date(),
         'AvaliacaoAlterada' => rand(1,2) == 2 ? 1 : 0,
         'Peso' => rand(1,2) == 2 ? 75.5 : 150.0,
-        'Altura' => rand(1,2) == 2 ? 1.90 : 1.50
-    ];
-});
-
-$factory->define(\Famerp\Models\ListaChamada::class, function(Faker\Generator $faker){
-    return [
-        'Prontuario' => rand(1,3) == 1 ? $faker->word : '',
-        'Observacao' => rand(1,4) == 1 ? $faker->sentence(20) : '',
-        'PacienteID' => 1
+        'Altura' => rand(1,2) == 2 ? 1.90 : 1.50,
+        'TurmaID' => 1
     ];
 });

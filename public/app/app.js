@@ -1,12 +1,12 @@
 var app = angular.module('famerp', []);
-app.controller('listaController', function ($scope, $http) {
-    $scope.listas = [];
+app.controller('turmasController', function ($scope, $http) {
+    $scope.turmas = [];
 
     $http({
         method: 'GET',
-        url: '/api/listas-chamadas'
+        url: '/api/turmas'
     }).then(function successCallback(response) {
-        $scope.listas = response.data;
+        $scope.turmas = response.data;
     }, function errorCallback(response) {
         console.log(response.errors);
     });

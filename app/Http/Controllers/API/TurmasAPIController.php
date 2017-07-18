@@ -2,13 +2,13 @@
 
 namespace Famerp\Http\Controllers\API;
 
-use Famerp\Models\ListaChamada;
+use Famerp\Models\Turma;
 use Famerp\Http\Controllers\Controller;
 
-class ListasChamadasAPIController extends Controller
+class TurmasAPIController extends Controller
 {
     public function index()
     {
-        return ListaChamada::all();
+        return Turma::all();
     }
 }

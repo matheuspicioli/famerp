@@ -1,12 +1,12 @@
 @extends('layouts.app')
-
+@section('Titulo', 'Editar paciente')
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading text-center">
-                        <h4>Editar pacientes</h4>
+                        <h4>Editar paciente</h4>
                     </div>
                     <div class="panel-body">
                         {!!

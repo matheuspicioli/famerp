@@ -6,11 +6,11 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading text-center">
-                        <h4>Descrição da lista de chamada</h4>
+                        <h4>Descrição da da turma</h4>
                         <div class="row">
-                            {!! Button::primary(Icon::create('pencil'))->asLinkTo(route('lista-chamada.edit', $listaChamada->ListaChamadaID)) !!}
+                            {!! Button::primary(Icon::create('pencil'))->asLinkTo(route('turmas.edit', $turma->TurmaID)) !!}
                             {!! Button::danger(Icon::create('remove'))
-                                    ->asLinkTo(route('lista-chamada.destroy', $listaChamada->ListaChamadaID))
+                                    ->asLinkTo(route('turmas.destroy', $turma->TurmaID))
                                      ->addAttributes(['onclick' => "event.preventDefault();document.getElementById(\"form-delete\").submit();"])
                             !!}
                         </div>
@@ -18,7 +18,7 @@
                     <div class="panel-body">
                         @php $formDelete = FormBuilder::plain([
                                 'id'        => 'form-delete',
-                                'route'     => ['lista-chamada.destroy', $listaChamada->ListaChamadaID],
+                                'route'     => ['turmas.destroy', $turma->TurmaID],
                                 'method'    => 'DELETE',
                                 'style'     => 'display:none'
                             ]) @endphp
@@ -27,23 +27,31 @@
                             <tbody>
                                 <tr>
                                     <th scope="row">#</th>
-                                    <td>{{ $listaChamada->ListaChamadaID }}</td>
+                                    <td>{{ $turma->TurmaID }}</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Horas</th>
-                                    <td>{{ $listaChamada->HoraCadastro }}</td>
+                                    <th scope="row">Hora do cadastro</th>
+                                    <td>{{ $turma->HoraCadastro }}</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Prontuario</th>
-                                    <td>{{ $listaChamada->Prontuario }}</td>
+                                    <th scope="row">Nome turma</th>
+                                    <td>{{ $turma->Nome }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Prontuário</th>
+                                    <td>{{ $turma->Prontuario }}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Observacao</th>
-                                    <td>{{ $listaChamada->Observacao }}</td>
+                                    <td>{{ $turma->Observacao }}</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Paciente</th>
-                                    <td>{{ $listaChamada->PacienteNome }}</td>
+                                    <th scope="row">Pacientes</th>
+                                    <td>
+                                        @foreach($turma->Pacientes as $paciente)
+                                            {{ $paciente->Nome }}<br>
+                                        @endforeach
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

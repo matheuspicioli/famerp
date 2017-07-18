@@ -9,18 +9,24 @@ class Paciente extends Model implements TableInterface
 {
     protected $fillable = [
         'Nome', 'NumeroCartaoSUS', 'Sexo', 'DataNascimento',
-        'AvaliacaoAlterada', 'Peso', 'Altura'
+        'AvaliacaoAlterada', 'Peso', 'Altura', 'TurmaID'
     ];
 
+    protected $appends = ['DataNascimentoPadrao', 'HoraCadastro', 'NomeTurma'];
     protected $primaryKey = 'PacienteID';
     protected $table = 'Pacientes';
 
-    public function ListasChamadas()
+    public function Turma()
     {
-        return $this->hasMany('Famerp\Models\ListaChamada', 'PacienteID');
+        return $this->belongsTo(Turma::class, 'TurmaID');
     }
 
-    public function getDataNascimento()
+    public function getNomeTurmaAttribute()
+    {
+        return $this->Turma->Nome;
+    }
+
+    public function getDataNascimentoPadraoAttribute()
     {
         $dataNascimento = $this->DataNascimento;
         $novaData = explode('-', $dataNascimento);
@@ -31,7 +37,7 @@ class Paciente extends Model implements TableInterface
         return "$dia/$mes/$ano";
     }
 
-    public function getHoraCadastro(){
+    public function getHoraCadastroAttribute(){
         $hora = $this->created_at->hour;
         $minuto = $this->created_at->minute;
         $segundo = $this->created_at->second;
@@ -65,7 +71,7 @@ class Paciente extends Model implements TableInterface
             case 'Nome':
                 return $this->Nome;
             case 'Data nascimento':
-                return $this->getDataNascimento();
+                return $this->DataNascimento;
         }
     }
 }

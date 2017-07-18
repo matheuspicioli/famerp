@@ -14,9 +14,6 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('pacientes', 'Cadastros\PacientesController');
-Route::resource('lista-chamada', 'Cadastros\ListaChamadasController');
+Route::resource('turmas', 'Cadastros\TurmasController');
 
-Route::post('lista-chamada/pesquisa/', 'Cadastros\ListaChamadasController@pesquisar')
-->name('lista-chamada.pesquisar');
-
-Route::get('/pdf', 'PDF\PDFController@pdfListaChamada');
+Route::get('/pdf-lista-chamada-turma/{id}', 'PDF\PDFController@pdfListaChamada');

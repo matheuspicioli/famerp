@@ -1,39 +1,43 @@
 @extends('layouts.app')
-
+@section('Titulo', 'Turmas')
 @section('content')
     <div class="container" ng-app="famerp">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading text-center">
-                        <h3>Listas de chamadas</h3>
+                        <h3>Listas de turmas</h3>
                         <div class="row">
-                            {!! Button::primary('Nova lista de chamada')->asLinkTo(route('lista-chamada.create')) !!}
+                            {!! Button::primary('Nova turma')->asLinkTo(route('turmas.create')) !!}
                         </div>
                     </div>
-                    <div class="panel-body" ng-controller="listaController">
+                    <div class="panel-body" ng-controller="turmasController">
                         <form>
                             <input type="text" class="form-control" ng-model="busca">
                         </form>
+                        <hr>
                         <table class="table table-striped">
                             <thead>
                                 <th>#</th>
                                 <th>Hora do cadastro</th>
-                                <th>Nome do paciente</th>
+                                <th>Nome da turma</th>
                                 <th>Prontuário</th>
                                 <th>Ações</th>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="lista in listas | filter:busca">
-                                    <td>@{{ lista.ListaChamadaID }}</td>
-                                    <td>@{{ lista.HoraCadastro }}</td>
-                                    <td>@{{ lista.PacienteNome }}</td>
-                                    <td>@{{ lista.Prontuario }}</td>
+                                <tr ng-repeat="turma in turmas| filter:busca">
+                                    <td>@{{ turma.TurmaID }}</td>
+                                    <td>@{{ turma.HoraCadastro }}</td>
+                                    <td>@{{ turma.Nome }}</td>
+                                    <td>@{{ turma.Prontuario }}</td>
                                     <td>
-                                        <a href="/lista-chamada/@{{ lista.ListaChamadaID }}/edit">
+                                        <a href="/pdf-lista-chamada-turma/@{{ turma.TurmaID  }}">
+                                            <span class="glyphicon glyphicon-download-alt"></span>
+                                        </a>
+                                        <a href="/turmas/@{{ turma.TurmaID }}/edit">
                                             <span class="glyphicon glyphicon-pencil"></span>
                                         </a>
-                                        <a href="/lista-chamada/@{{ lista.ListaChamadaID }}">
+                                        <a href="/turmas/@{{ turma.TurmaID }}">
                                             <span class="glyphicon glyphicon-remove"></span>
                                         </a>
                                     </td>

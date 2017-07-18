@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTablePacientes extends Migration
+class CreatePacientesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -22,6 +22,12 @@ class CreateTablePacientes extends Migration
             $table->boolean('AvaliacaoAlterada')->nullable();
             $table->float('Peso');
             $table->float('Altura');
+
+            $table->integer('TurmaID')->unsigned()->nullable();
+            $table->foreign('TurmaID')
+                ->references('TurmaID')
+                ->on('Turmas')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -33,8 +39,10 @@ class CreateTablePacientes extends Migration
      */
     public function down()
     {
-        Schema::table('Pacientes', function (Blueprint $table) {
+        Schema::table('Pacientes', function(Blueprint $table){
+            Schema::enableForeignKeyConstraints();
             $table->dropIfExists('Pacientes');
+            Schema::disableForeignKeyConstraints();
         });
     }
 }

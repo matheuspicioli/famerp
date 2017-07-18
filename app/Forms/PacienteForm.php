@@ -2,6 +2,7 @@
 
 namespace Famerp;
 
+use Famerp\Models\Turma;
 use Kris\LaravelFormBuilder\Form;
 
 class PacienteForm extends Form
@@ -9,6 +10,12 @@ class PacienteForm extends Form
     public function buildForm()
     {
         $this
+            ->add('TurmaID', 'entity', [
+                'class'     => Turma::class,
+                'property'  => 'Nome',
+                'label'     => 'Turma',
+                'rules'     => 'required|exists:Turmas,TurmaID'
+            ])
             ->add('Nome', 'text', [
                 'rules' => 'required|max:255'
             ])
