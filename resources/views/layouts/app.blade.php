@@ -16,6 +16,7 @@
 <body>
 <div id="app">
     @php
+    if(Auth::check()){
         $navbar = Navbar::withBrand(config('app.name'), url('/home'))->inverse();
         $menus = Navigation::links([
             ['link' => route('pacientes.index'), 'title' => 'Pacientes'],
@@ -23,20 +24,24 @@
         ]);
         $linksDireita = Navigation::links([
             [
-                'Dropdown',
+                Auth::user()->name,
                 [
                     [
-                        'link' => '#',
-                        'title' => 'Link1'
-                    ],
-                    [
-                        'link' => '#',
-                        'title'=> 'Link2'
+                        'link' => '/logout',
+                        'title' => 'Logout'
                     ]
                 ]
             ]
         ])->right();
         $navbar->withContent($menus)->withContent($linksDireita);
+    } else {
+        $navbar = Navbar::withBrand(config('app.name'), url('/login'))->inverse();
+        $menus = Navigation::links([
+            ['link' => url('/login'), 'title' => 'Login'],
+            ['link' => url('/register'), 'title' => 'Registrar']
+        ]);
+        $navbar->withContent($menus);
+    }
     @endphp
 
     {!! $navbar !!}

@@ -10,10 +10,19 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::auth();
 
-Route::resource('pacientes', 'Cadastros\PacientesController');
-Route::resource('turmas', 'Cadastros\TurmasController');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/logout', function(){
+        Auth::logout();
+        return redirect()->route('login');
+        return view('auth.login');
+    });
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/pdf-lista-chamada-turma/{id}', 'PDF\PDFController@pdfListaChamada');
+    Route::resource('pacientes', 'Cadastros\PacientesController');
+    Route::resource('turmas', 'Cadastros\TurmasController');
+
+    Route::get('/pdf-lista-chamada-turma/{id}', 'PDF\PDFController@pdfListaChamada');
+});
