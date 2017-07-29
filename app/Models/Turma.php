@@ -4,28 +4,22 @@ namespace Famerp\Models;
 
 use Bootstrapper\Interfaces\TableInterface;
 use Illuminate\Database\Eloquent\Model;
+use Famerp\Traits\TurmaTrait;
 
 class Turma extends Model implements TableInterface
 {
+    use TurmaTrait;
+
     protected $fillable = [
         'Nome', 'Prontuario', 'Observacao'
     ];
-
     protected $appends = ['HoraCadastro'];
-
     protected $primaryKey = 'TurmaID';
     protected $table = 'Turmas';
 
     public function Pacientes()
     {
         return $this->hasMany(Paciente::class, 'TurmaID');
-    }
-
-    public function getHoraCadastroAttribute(){
-        $hora = $this->created_at->hour;
-        $minuto = $this->created_at->minute;
-        $segundo = $this->created_at->second;
-        return "$hora:$minuto:$segundo";
     }
 
     /**

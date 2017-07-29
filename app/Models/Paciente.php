@@ -4,9 +4,12 @@ namespace Famerp\Models;
 
 use Bootstrapper\Interfaces\TableInterface;
 use Illuminate\Database\Eloquent\Model;
+use Famerp\Traits\PacienteTrait;
 
 class Paciente extends Model implements TableInterface
 {
+    use PacienteTrait;
+
     protected $fillable = [
         'Nome', 'NumeroCartaoSUS', 'Sexo', 'DataNascimento',
         'AvaliacaoAlterada', 'Peso', 'Altura', 'TurmaID'
@@ -19,29 +22,6 @@ class Paciente extends Model implements TableInterface
     public function Turma()
     {
         return $this->belongsTo(Turma::class, 'TurmaID');
-    }
-
-    public function getNomeTurmaAttribute()
-    {
-        return $this->Turma->Nome;
-    }
-
-    public function getDataNascimentoPadraoAttribute()
-    {
-        $dataNascimento = $this->DataNascimento;
-        $novaData = explode('-', $dataNascimento);
-        $ano = $novaData[0];
-        $mes = $novaData[1];
-        $dia = $novaData[2];
-
-        return "$dia/$mes/$ano";
-    }
-
-    public function getHoraCadastroAttribute(){
-        $hora = $this->created_at->hour;
-        $minuto = $this->created_at->minute;
-        $segundo = $this->created_at->second;
-        return "$hora:$minuto:$segundo";
     }
 
     /**
